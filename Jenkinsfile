@@ -12,6 +12,7 @@ pipeline {
                 script {
                     sh """
                      echo "hello build"
+                     env
                      """
                 }
                 echo 'Building..'
