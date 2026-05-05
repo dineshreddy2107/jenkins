@@ -29,8 +29,19 @@ pipeline {
             }
         }
         stage('Deploy') {
+            input {
+            message "Should we continue?"
+            ok "Yes, we should"
+            submitter "alice"
+            parameters {
+                string(name: 'person', defaultValue: 'Mr jenkins', description: 'who should i say hello to?')
+            }
+            }
             steps {
-                echo 'Deploying....'
+                script {
+                    echo "hello, ${PERSON}, nice to meet you."
+                    echo 'Deploying..'
+                }
             }
         }
     }
